@@ -12,7 +12,8 @@ export class OrganizationService {
 
   async createOrganization(data: any): Promise<Organization> {
     const organization = this.organizationRepository.create(data);
-    return this.organizationRepository.save(organization);
+    this.organizationRepository.save(organization);
+    return;
   }
 
   async findAllOrganizations(): Promise<Organization[]> {

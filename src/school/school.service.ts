@@ -29,7 +29,8 @@ export class SchoolService {
       address: savedAddress,
       organization: savedOrganization,
     });
-    return this.schoolRepository.save(school);
+    this.schoolRepository.save(school);
+    return;
   }
 
   async findAllSchools(): Promise<School[]> {

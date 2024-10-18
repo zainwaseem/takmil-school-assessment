@@ -12,7 +12,8 @@ export class AddressService {
 
   async createAddress(data: any): Promise<Address> {
     const address = this.addressRepository.create(data);
-    return this.addressRepository.save(address);
+    this.addressRepository.save(address);
+    return;
   }
 
   async findAllAddresses(): Promise<Address[]> {
@@ -30,7 +31,7 @@ export class AddressService {
   async updateAddress(id: number, data: any): Promise<Address> {
     const address = await this.findAddressById(id);
     Object.assign(address, data);
-    return this.addressRepository.save(address);
+    return this.addressRepository.save([address])[0];
   }
 
   async deleteAddress(id: number): Promise<void> {
