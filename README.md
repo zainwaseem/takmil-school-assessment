@@ -1,74 +1,106 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Takmil School Assessment - NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project is a REST API developed using NestJS, TypeORM, and PostgreSQL. It provides CRUD operations for managing Schools, Addresses, and Organizations.
 
-  <p align="center">takmil-school-assessment</p>  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Technologies Used
 
-## Description
+- **NodeJS**
+- **NestJS**
+- **TypeORM**
+- **PostgreSQL**
+- **Postman for API testing**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
 
-## Project setup
+- **Node.js** (v20 or higher)
+- **PostgreSQL** database
+- **NestJS CLI** (optional, but recommended for development)
 
-```bash
-$ npm install
-```
+## Setup Instructions
 
-## Compile and run the project
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/zainwaseem/takmil-school-assessment.git
+   ```
+2. **Install dependencies**:
+   ```bash
+   cd takmil-school-assessment
+   npm install
+   ```
+3. **Configure the PostgreSQL database**:
+   - Make sure you have PostgreSQL running and create a database named `takmil` (or use your preferred name).
+   - Update the database credentials in `src/app.module.ts`:
+     ```typescript
+     TypeOrmModule.forRoot({
+       type: 'postgres',
+       host: 'localhost',
+       port: 5432,
+       username: 'your_db_username',
+       password: 'your_db_password',
+       database: 'takmil',
+       entities: [School, Address, Organization],
+       synchronize: true,
+     }),
+     ```
+4. **Run the application**:
+   ```bash
+   npm run start
+   ```
+   The application will start on `http://localhost:3000`.
 
-```bash
-# development
-$ npm run start
+## API Endpoints
 
-# watch mode
-$ npm run start:dev
+### Schools
 
-# production mode
-$ npm run start:prod
-```
+- **GET /schools**: Get a list of all schools.
+- **GET /schools/:id**: Get details of a specific school.
+- **POST /schools**: Create a new school.
+- **PUT /schools/:id**: Update an existing school.
+- **DELETE /schools/:id**: Delete a school.
 
-## Run tests
+### Addresses
 
-```bash
-# unit tests
-$ npm run test
+- **GET /addresses**: Get a list of all addresses.
+- **GET /addresses/:id**: Get details of a specific address.
+- **POST /addresses**: Create a new address.
+- **PUT /addresses/:id**: Update an existing address.
+- **DELETE /addresses/:id**: Delete an address.
 
-# e2e tests
-$ npm run test:e2e
+### Organizations
 
-# test coverage
-$ npm run test:cov
-```
+- **GET /organizations**: Get a list of all organizations.
+- **GET /organizations/:id**: Get details of a specific organization.
+- **POST /organizations**: Create a new organization.
+- **PUT /organizations/:id**: Update an existing organization.
+- **DELETE /organizations/:id**: Delete an organization.
 
-## Deployment
+## Testing with Postman
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+You can test the API using the Postman collection provided in the link below:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+- **Postman Collection**: [Postman Collection Link](https://wjiks2-5761.postman.co/workspace/Team-Workspace~166a0f0b-4c2e-41bf-8012-1f55d3d6ffcc/collection/21421518-b7b4dad6-5530-427d-bc07-0feb0783aff1?action=share&creator=21421518)
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+## Project Structure
 
-## License
+- **src/**: Contains the source code.
+  - **school/**: Module, service, and controller for School entity.
+  - **address/**: Module, service, and controller for Address entity.
+  - **organization/**: Module, service, and controller for Organization entity.
+  - **app.module.ts**: The main application module that imports all other modules.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Database Setup
+
+- The project uses TypeORM for database interactions.
+- **Synchronize** is set to `true` in `TypeOrmModule` configuration, which automatically syncs the database schema. This should be turned off in production.
+
+## Running Tests
+
+- There are no unit tests implemented for this project yet. Testing has been done manually using Postman.
+
+## GitHub Repository
+
+- **Repository**: [Takmil School Assessment GitHub](https://github.com/zainwaseem/takmil-school-assessment.git)
+
+---
+
+Feel free to modify or expand the README as needed! Let me know if you need anything else.
