@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { School } from './school/school.entity';
 import { Address } from './address/address.entity';
 import { Organization } from './organization/organization.entity';
 import { SchoolController } from './school/school.controller';
+import { SchoolService } from './school/school.service';
 import { OrganizationService } from './organization/organization.service';
 import { OrganizationController } from './organization/organization.controller';
 import { AddressService } from './address/address.service';
 import { AddressController } from './address/address.controller';
-import { SchoolService } from './school/school.service';
 
 @Module({
   imports: [

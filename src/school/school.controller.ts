@@ -21,6 +21,8 @@ export class SchoolController {
 
   @Get()
   async findAll(): Promise<School[]> {
+    console.log('Getting all schools');
+
     return this.schoolService.findAllSchools();
   }
 
